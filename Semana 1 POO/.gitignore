@@ -1,1 +1,18 @@
-/.metadata/
+# Eclipse / IDE
+.metadata/
+.settings/
+.recommenders/
+.project
+.classpath
+
+# Logs
+*.log
+*.log.*
+
+# Binarios / builds
+bin/
+target/
+
+# OS
+Thumbs.db
+.DS_Store
