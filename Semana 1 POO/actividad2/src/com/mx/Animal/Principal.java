@@ -1,0 +1,59 @@
+package com.mx.Animal;
+
+import com.mx.Animal.Animal;
+import com.mx.Animal.Implementacion;
+
+public class Principal {
+
+	public static void main(String args[]) {
+
+		// instanciar el objeto
+		Animal a1 = new Animal("Gúera", "Perro", "Hembra", 2, 30);
+		Animal a2 = new Animal("Oso", "Perro", "Macho", 3, 40);
+		Animal a3 = new Animal("Zeus", "Gato", "Macho", 1, 8);
+		Animal a4 = new Animal("Teva", "Gato", "Hembra", 5, 7);
+		Animal a5 = new Animal("Caramelo", "Cotorro", "Macho", 2, 1);
+		Animal a6 = new Animal(" Rex", " Tortuga ", " Hembra", 7, 23);
+		Animal a7 = new Animal("Dalila", "Iguana", "Hembra", 9, 11);
+		// objeto auxiliar para valores de busqueda
+		Animal aniAux = null;
+
+		// instanciar la clase de implementacion para poder ocupar todos los metodos
+		// declarados
+		Implementacion imp = new Implementacion();
+
+		// alamcenar todos los objetos en la lista
+		imp.create(0, a1);
+		imp.create(1, a2);
+		imp.create(2, a3);
+		imp.create(3, a4);
+		imp.create(4, a5);
+		imp.create(5, a6);
+		imp.create(6, a7);
+
+		// mostrar
+		imp.read();
+
+		// buscar
+		aniAux = imp.buscar(4);
+		System.out.println("Animal encontrado" + aniAux);
+
+		// editar
+		aniAux = imp.buscar(1);
+		aniAux.setNombre("Panfilo");
+		aniAux.setEspecie("Ave");
+		aniAux.setEdad(100);
+		aniAux.setPeso(80);
+		imp.update(1, a2);
+		System.out.println("Animal editado" + aniAux);
+
+		// eliminar
+		imp.delete(2);
+		imp.read();
+
+		// contar
+		imp.contar();
+
+	}
+
+}

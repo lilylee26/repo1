@@ -1,0 +1,86 @@
+package com.mx.Empleado;
+
+public class Empleado {
+	
+	//declaracion de atributos
+	private String nombre;
+	private String apellidoP;
+	private String apellidoM;
+	private Long telefono;
+	private int edad;
+	private double sueldo;
+	
+	//constructor por defecto
+	public Empleado() {
+		
+	}
+	
+	//constructor con parametros
+	public Empleado(String nombre, String apellidoP, String apellidoM, Long telefono, int edad, double sueldo) {
+		super();
+		this.nombre = nombre;
+		this.apellidoP = apellidoP;
+		this.apellidoM = apellidoM;
+		this.telefono = telefono;
+		this.edad = edad;
+		this.sueldo = sueldo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidoP() {
+		return apellidoP;
+	}
+
+	public void setApellidoP(String apellidoP) {
+		this.apellidoP = apellidoP;
+	}
+
+	public String getApellidoM() {
+		return apellidoM;
+	}
+
+	public void setApellidoM(String apellidoM) {
+		this.apellidoM = apellidoM;
+	}
+
+	public Long getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(Long telefono) {
+		this.telefono = telefono;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado [nombre=" + nombre + ", apellidoP=" + apellidoP + ", apellidoM=" + apellidoM + ", telefono="
+				+ telefono + ", edad=" + edad + ", sueldo=" + sueldo + "]";
+	}
+	
+	
+		
+
+}
