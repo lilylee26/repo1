@@ -1,6 +1,7 @@
 package com.mx.Animal;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
@@ -215,8 +216,7 @@ public class Principal {
 
 						} else if (menuE == 2) {
 
-							// VALIDACION LISTA VACIA (ya sabemos que no está vacía por el if, pero igual
-							// queda claro)
+							// VALIDACION LISTA VACIA 
 							if (imp.lista.size() == 0) {
 								System.out.println("No se puede eliminar nada, la lista esta vacia ");
 							} else {
@@ -269,8 +269,8 @@ public class Principal {
 						System.out.println("Ingresa el valor a buscar: ");
 						String valor = scan.nextLine();
 
-						// usamos tu auxiliar aniAux (como pediste) para imprimir resultados uno por uno
-						java.util.List<Animal> encontrados = imp.buscarPorAtributo(menuE, valor);
+						// para imprimir resultados uno por uno
+						List<Animal> encontrados = imp.buscarPorAtributo(menuE, valor);
 
 						if (encontrados.size() > 0) {
 							System.out.println("Se encontraron " + encontrados.size() + " coincidencias: ");

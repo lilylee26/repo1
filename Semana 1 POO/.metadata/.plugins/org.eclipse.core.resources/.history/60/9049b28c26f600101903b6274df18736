@@ -1,5 +1,0 @@
-package com.mx.Animal;
-
-public interface IMetodos {
-
-}
