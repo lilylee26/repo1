@@ -9,21 +9,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
 
 @Entity
-@Table
-
+@Table(
+   name = "CLIENTE",
+   uniqueConstraints = {
+       @UniqueConstraint(
+           name = "UK_CLIENTE_NOMBRE_CIUDAD",
+           columnNames = {"NOMBRE","CIUDAD"}
+       )
+   }
+)
 public class Cliente {
 	
 	
 	@Id
+	
 	private int idCliente;
+	
 	private String nombre;
 	private String ciudad;
 	
 	
 	@OneToMany(mappedBy = "clienteId", cascade = CascadeType.ALL)
-	@JsonIgnore
+	
 	//mappendby es para indicar el atributo de la clase hijo que hace referencia a mi clase padre
 	//cascade es para indicar como se vera reflejadas las operaciones de persistencia de la clase padre
 	//en la clase hijo
@@ -35,12 +46,12 @@ public class Cliente {
 	}
 
 
-	public Cliente(int idCliente, String nombre, String ciudad, List<Pedido> lista) {
+	public Cliente(int idCliente, String nombre, String ciudad) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
 		this.ciudad = ciudad;
-		this.lista = lista;
+		
 	}
 
 
@@ -74,19 +85,12 @@ public class Cliente {
 	}
 
 
-	public List<Pedido> getLista() {
-		return lista;
-	}
 
-
-	public void setLista(List<Pedido> lista) {
-		this.lista = lista;
-	}
 
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", ciudad=" + ciudad + ", lista=" + lista
+		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", ciudad=" + ciudad
 				+ "]";
 	}
 	

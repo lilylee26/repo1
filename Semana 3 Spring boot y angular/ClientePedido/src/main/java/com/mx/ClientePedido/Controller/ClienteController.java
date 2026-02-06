@@ -55,7 +55,7 @@ public class ClienteController {
 			service.guardar(cliente);
 			return ResponseEntity.status(HttpStatus.CREATED).body("El cliente se registro con exito");
 		}else {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Ese id no existe");
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Ese nombre ya existe");
 		}
 	
 	}

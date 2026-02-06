@@ -17,8 +17,24 @@ public class PedidoService {
 	private IPedidoDao dao;
 	
 	public void guardar(Pedido pedido) {
-		dao.save(pedido);
-	}
+
+        // no permitir pedido duplicado
+        Integer idCliente = pedido.getClienteId().getIdCliente();
+
+        boolean duplicado = dao.existsByFechaAndMontoAndClienteId_IdCliente(
+                pedido.getFecha(),
+                pedido.getMonto(),
+                idCliente
+        );
+
+        if (duplicado) {
+            throw new RuntimeException("Pedido duplicado: mismo cliente, fecha y monto");
+        }
+
+        dao.save(pedido);
+    }
+
+
 	
 	public List<Pedido> listar(){
 		return dao.findAll(Sort.by(Sort.Direction.ASC, "idPedido"));
