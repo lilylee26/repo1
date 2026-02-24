@@ -1,0 +1,9 @@
+services:
+  spring-pedido:
+    build: .
+    container_name: spring-pedido
+    ports:
+      - "8081:8004"
+    environment:
+      - SERVER_PORT=8004
+    restart: unless-stopped

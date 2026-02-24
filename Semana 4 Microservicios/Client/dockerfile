@@ -1,0 +1,28 @@
+#nos permite usar maven para construir la aplicacion y por lo tanto todas herramientas necesarias para esto
+FROM maven:3.8-eclipse-temurin-17 as builder
+
+#Todas las siguiente operaciones se ejecutaran en este directorio
+WORKDIR /app
+
+#Copiamos todo el codigo fuente al contenedor
+COPY . .
+
+#Compilar y empaquetar la aplicacion, omitiendo las pruebas para acelerar el proceso
+RUN mvn clean package -DskipTests
+
+
+#Usamos esta imagen ligera solo para ejecutar, no para compilar
+FROM eclipse-temurin:17-jre-alpine
+
+#Establecemos lo mismo, el directorio de trabajo donde se ejecutaran las instrucciones
+WORKDIR /app
+
+#Copiamos el .jar compilador, descartando todo lo demas
+COPY --from=builder /app/target/Client-0.0.1-SNAPSHOT.jar app.jar
+
+#Exponemos el puerto en el que la aplicacion se ejecutara
+EXPOSE 8080
+
+#iniciar la apliicacion spring cuando el contenedor se inicie, ejecutando el comando java -jar app.jar para iniciar
+ENTRYPOINT ["java","-jar","app.jar"]
+
