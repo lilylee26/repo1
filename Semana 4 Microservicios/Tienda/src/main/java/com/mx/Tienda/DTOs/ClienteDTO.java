@@ -14,9 +14,5 @@ public class ClienteDTO {
     private String direccion;
     private Integer tiendaId;
     
-    
-    
-    
-    
 
 }
